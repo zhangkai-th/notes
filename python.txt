@@ -1,0 +1,250 @@
+>>> students=["tom","jerry","cat"]
+>>> numbers=['1002','1220','1002']
+>>> print("tom s number is",numbers[students.index('tom')])
+tom s number is 1002
+
+>>> students={"name":"tom","age":"10","skill":"eat food"}  字典
+>>>
+>>> print(students)
+{'name': 'tom', 'age': '10', 'skill': 'eat food'}
+将列表转为字典
+>>> students=[('name','tom'),('age','10')]
+>>> detail=dict(students)
+>>> print(detail)
+{'name': 'tom', 'age': '10'}
+>>> print(detail)
+{'name': 'tom', 'age': '10'}
+>>> print(detail["name"])
+tom
+>>> print(detail["age"])
+10
+
+>>> detail=dict(name="tom",age=10)
+>>> print(detail)
+{'name': 'tom', 'age': 10}
+>>> detail['tom']='1991'
+>>> print("%(tom)s" % detail)
+1991
+
+删除字典元素
+>>> user={'tom':'1002','jerry':'1002'}
+>>> print("删除前",user)
+删除前 {'tom': '1002', 'jerry': '1002'}
+>>> del user['tom']
+>>> print("删除后",user)
+删除后 {'jerry': '1002'}
+del user  删除整个字典
+当键重复时保留最后一个
+
+>>> user={'tom':'1001','jeery':'1002'}
+>>> print("获取字典长度",len(user))
+获取字典长度 2
+>>> print("变量类型",type(user))
+变量类型 <class 'dict'>
+
+字典类型耗内存，但是查询效率较高
+
+>>> user.clear()   清除字典
+>>> print("清除字典数据后，字典长度%d"% len(user))
+清除字典数据后，字典长度0
+python 浅复制
+>>> user={'tom':'1002','jerry':'1002'}
+>>> stu=user.copy()
+>>> print("复制后的结果%s"%stu)
+复制后的结果{'tom': '1002', 'jerry': '1002'}
+
+fromkeys 用法
+>>> seq=('name','age','sex')
+>>> info=dict.fromkeys(seq)
+>>> print(info)
+{'name': None, 'age': None, 'sex': None}
+>>> info=dict.fromkeys(seq,10)
+>>> print(info)
+{'name': 10, 'age': 10, 'sex': 10}
+
+get()返回值
+ print(info.get('name'))
+10
+>>> print(stu.get('name','未指定'))   未指定代表默认值之,当没有值时，返回默认值
+未指定
+
+in操作,判断键是否存在
+>>> stu={'小明':'1001','笑话':'1002'}
+>>> print("小明是否在stu字典中%s"%('小明' in stu))
+小明是否在stu字典中True
+
+items()
+>>> print("itemls %s"%(stu.items()))
+itemls dict_items([('小明', '1001'), ('笑话', '1002')])
+
+keys()
+>>> print(stu.keys())
+dict_keys(['小明', '笑话'])
+
+setdefault()  如果没有值则给定值，并添加组织字典中
+>>> print("xq %s" % stu.setdefault('xq'))
+xq None
+>>> print(stu)
+{'小明': '1001', '笑话': '1002', 'xq': None}
+>>> print('xh %s' % stu.setdefault('xh','1003'))
+xh 1003
+>>> print(stu)
+{'小明': '1001', '笑话': '1002', 'xq': None, 'xh': '1003'}
+
+update()  如果有相同的键则覆盖,，没有则添加
+>>> print(stu)
+{'小明': '1001', '笑话': '1002', 'xq': None, 'xh': '1003'}
+>>> stu1={'jk':'1011'}
+>>> stu.update(stu1)
+>>> print(stu)
+{'小明': '1001', '笑话': '1002', 'xq': None, 'xh': '1003', 'j': 'k', 'jk': '1011'}
+>>> stu1={'jk':'1012'}
+>>> stu.update(stu1)
+>>> print(stu)
+{'小明': '1001', '笑话': '1002', 'xq': None, 'xh': '1003', 'j': 'k', 'jk': '1012'}
+
+values()  返回字典中的所有值
+>>> student={'tom':'1001','jerry':'1002'}
+>>> print("student的值为%s"% list(student.values()))
+student的值为['1001', '1002']
+
+10s表示字符宽度为10
+>>> print("student的值为%s"% list(student.values()))
+student的值为['1001', '1002']
+>>> print("tom的学号是:%(tom)10s" % student)
+tom的学号是:      1001
+
+
+循环 语句
+>>> import math
+>>> print("圆面积为%.2f"%(math.pi*5**2))
+圆面积为78.54
+import model1,model2...  多个模块用逗号隔开
+>>> from math import pi
+>>> print(pi)
+3.141592653589793
+from math import *
+import math as m  m为别名
+
+多重赋值
+>>> x,y,z=1,2,3
+>>> print(x,y,z)
+1 2 3
+交换值 
+>>> x,y=y,x
+>>> print(x,y)
+2 1
+
+>>> print(student)
+{'tom': '1001', 'jerry': '1002'}
+>>> key,value=student.popitem()
+>>> print(key,value)
+jerry 1002
+
+if语句
+>>> greeting='hello'
+>>> if greeting == 'hello':
+...     print('hello')
+...
+hello
+
+#coding:UTF-8  解决中文乱码的问题
+
+>>> greet="hello"
+>>> if greeting == 'hello':
+...     student={'tom':'1001','jerry':'1002'}
+...     print(f'字典元素的长度为{len(student)}')
+...     student.clear()
+...     print(f'{len(student)}')
+...
+字典元素的长度为2
+0
+
+if条件判断语句
+>>> num = 10
+>>> if num > 10:
+...     print('num > 10')
+... elif num >=5 and num <=10:
+...     print('num ==10')
+... else:
+...     print("error")
+...
+num ==10
+
+
+while 循环
+>>> n=1
+>>> while n<=100:
+...     print(f'当前树脂字是:{n}')
+...     n+=1
+...
+当前树脂字是:1
+
+
+while遍历列表
+>>> n=0
+>>> stu=['a','b','c']
+>>> while n<len(stu):
+...     print(f'{stu[n]}')
+...     n+=1
+...
+a
+b
+c
+>>>
+
+for循环遍历列表
+>>> for f in stu:
+...     print(f'当前字母是{f}')
+...
+当前字母是a
+当前字母是b
+当前字母是c
+
+
+--------for循环遍历字典-------
+>>> tups={'tom':'1001','jerry':'1002'}
+>>> for tup in tups:
+...     print(f'{tup}:{tups[tup]}')
+...
+tom:1001
+jerry:1002
+
+循环遍历字典二
+>>> for key,value in tups.items():
+...     print(f'{key}:{value}')
+...
+tom:1001
+jerry:1002
+
+zip函数，将序列合在一起
+>>> student=['a','b','c']
+>>> number=[1,2,3]
+>>> for name,index in zip(student,number):
+...     print(f'name :{name},index:{index}')
+...
+name :a,index:1
+name :b,index:2
+name :c,index:3
+
+>>> for num1,num2 in zip(range(3),range(20)):
+...     print(num1,num2)
+...
+0 0
+1 1
+2 2
+
+>>> int(12.1)   将浮点数改为整数
+12
+
+查看函数帮助信息
+>>> help(abs)
+Help on built-in function abs in module builtins:
+
+abs(x, /)
+    Return the absolute value of the argument.
+
+>>>
+
+
+lamba函数，匿名函数

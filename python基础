@@ -1,0 +1,530 @@
+# coding: utf-8
+# import this;  #表示注释
+# message="hello world";
+# print(message.title());
+# name="zhangsan";
+# print(name.upper());
+# name="ZHANGSAN";
+# print(name.lower());
+# data1="hello";
+# data2="world";
+# print(data1+" "+data2);
+# print('This is \n test');  #\n表示换行符
+# message1='python  ';
+# print(message1.rstrip());  #临时删除多余的空白，message1中的数据不变lstrip()  strip();
+# print 2 ** 2;  #** 表示2的平方
+# age=21;
+# print("my age is "+str(age)); #将数字转换为数字模式
+#
+#
+#
+#
+# bicycles=['trek','cannodels','redline','specilized'];  #定义列表
+# print(bicycles);
+# print(bicycles[0]);
+# print(bicycles[-1]);  #返回最后一个列表元素
+# print(bicycles[-2]);  #返回倒数第二个元素
+#
+# bicycles[0]='qilu';  #修改第一个元素的值
+# print(bicycles);
+# bicycles.append('lisi');#在列表末尾添加元素
+# print(bicycles)
+# #在列表中第一个位置添加元素
+# bicycles.insert(0,'nishi');
+# print(bicycles);
+#
+# del bicycles[0];  #删除第一个元素
+# print(bicycles);
+#
+# del_metdata = bicycles.pop(); #删除列表末尾的一个元素,并保存在del_metdata变量中
+# print(del_metdata);
+# print(bicycles);
+#
+# del_metdata1 = bicycles.pop(0);  #删除列表第一个元素
+# print(bicycles);
+#
+# bicycles.remove("redline");    #删除列表中的redline元素,  删除列表中的指定元素  如果存在多次就只能删除一次
+# print(bicycles);
+#
+# bicycles.append('dead');
+# bicycles.sort();  #对列表进行排序
+# print(bicycles);
+# bicycles.sort(reverse=True);  #降序排序
+# print(bicycles);
+#
+#
+# print(sorted(bicycles,reverse=False));  #使用sorted进行临时排序
+
+# car=['lisi','wenyu','kw'];
+# car.reverse();   #倒着打印列表
+# print(car);
+#
+# print(len(car));      #获取列表的长度
+#
+# for cars in car:   #使用for循环打印列表
+#     print(cars);
+#
+# for num in range(1,5):   #打印1-4的数字   range(起始值，结束值，步长)
+#     print(num);
+#
+# nums=list(range(1,5));  #将其转化为列表
+# print(nums);
+#
+# print(min(nums));
+# print(max(nums));
+# print(sum(nums));
+
+# squares=[value**2 for value in range(1,6)];  #特殊语法
+# print(squares);
+#
+# books=['java','plsql','c++','javascript','vue','html'];
+# books_f=books[:];   #复制列表
+# print(books_f);
+# print(books[1:3]);
+#
+# #元组  不能进行修改
+# dimensions=(200,50,900);
+
+# cars=['audi','bmw','subaru','toyota'];
+# for car in cars:
+#     if car == 'bmw':
+#         print(car.upper());
+#     else:
+#         print(car.title());
+
+#!=  检查是否不相等
+# age_0=10;
+# age_1=20;
+# if (age_0 >= 20) and (age_1 >=20):    #or   检查多个条件
+#     print("已经满足18岁");
+# else:
+#     print("您未满18周岁");
+#
+#
+# #检查特定值是否包含在列表中
+# methods=['get','post','find','query','select'];
+# print('get' in methods);
+# print('get' not in methods);    #检查值是否不在列表中
+
+#布尔值  True  False
+# age =10;
+# if age<4:
+#     print("free");
+# elif age<10:
+#     print("10$");
+# else:
+#     print("100$");
+#
+# #字典  键值对
+# alien = {'color':'gree','age':'10'};
+# print(alien['color']);  #打印指定属性
+#
+# alien['x_p']=10;  #添加字典元素  键值对
+# alien['y_p']=20;
+# print(alien);
+#
+# alien['y_p']=90;
+# print(alien);  #修改字典中的元素
+#
+# del alien['y_p'];  #删除alien  元素
+# print(alien);
+#
+#
+# for key,value in alien.items():  #循环遍历字典元素
+#     print(key+":"+value);
+
+
+# alien = {'color':'gree','age':'10','weight':'10'};
+# for key in alien.keys():  #循环遍历key值
+#     print(key);
+#
+# for value in alien.values(): #循环遍历value值
+#     print(value);
+#
+# for value in set(alien.values()):  #使用set集合来过滤列表中存在重复的元素
+#     print(value);
+
+#-----------------字典列表
+# a_0 = {'color':'green','age':10};
+# a_1 = {'color':'red','age':20};
+# a_2 = {'color':'black','age':30};
+#
+# a_a = [a_0,a_1,a_2];
+# for a in a_a:
+#     print (a);
+#
+# #-----嵌套字典
+# users = {
+#     'user_01':{
+#         'age':'10',
+#         'sex':'女'
+#     },
+#     'user_02':{
+#         'age':'20',
+#         'sex':'男'
+#     }
+# }
+#
+# for  user_name,user_info in users.items():
+#     print(user_info['age']);
+
+
+#print(raw_input("say hello to everyone "));  #获取用户输入  python2.7中
+#int(age)  将字符型转换为整形  %  求余数
+
+#while循环
+# current_num  = 1;
+# while current_num < 5:
+#     print(current_num);
+#     current_num = current_num+1;
+
+# message = 'ok';
+# while message != 'quit':
+#     message=raw_input("please input: ");
+#     if(message == 'quit'):
+#         print("is quit");
+#         break;    #强制结束循环
+#     else:
+#         print(message);
+
+
+# num = 1;
+# while num <= 10:
+#     num = num + 1;
+#     if(num%2 == 0):
+#         continue;  #结束当前循环,进入下一循环
+#     else:
+#         print(str(num)+"奇数");
+
+#用户调研小程序示例
+# responses = {};
+# is_active = True;
+# while is_active:
+#     name = raw_input("\nWhat is your name？ ");
+#     response = raw_input("Which mount is your climb? ");
+#     responses[name]=response;
+#     repeat = raw_input("continue ? ");
+#     if(repeat == 'no'):
+#         is_active = False;
+#
+# print("\n----result-----");
+# for name,response in  responses.items():
+#     print(name+":"+response);
+
+
+#定义函数
+# def say_hello():
+#     print("Hello");
+# say_hello();
+#
+# def say_hello(username):     #定义带参数的函数
+#     print("Hello "+username);
+# say_hello('zhangsan');
+
+# def  get_pet_name(name,sex):
+#     print("name is "+name+" sex is "+sex);
+# get_pet_name('lisi','man');
+#
+# get_pet_name(sex="man",name="zs");
+#
+# def  get_class_name(name="1"):    #设置参数默认值
+#     print(name);
+# get_class_name();
+#
+#
+# def getname(firstname,lastname):
+#     fullname = firstname+" "+lastname;
+#     return fullname;    #经名字返回
+# print getname("l","oo");
+#
+#
+# def make_pizza(*menu):   #传递任意多个数值
+#     print(menu);
+# make_pizza('tomaot','mmm','wer');  #返回值为一个元组
+#
+# def makes_pizza(size,*menu):   #
+#     print(size);
+#     print(menu);
+# makes_pizza(12,'lisi','zhansan');
+
+
+
+
+# def print_message(first, **menu):  #**表示创建一个空字典
+#     menus = {};
+#     menus['first'] = first;
+#     for key,value in menu.items():
+#         menus[key] = value;
+#     return menus;
+# m = print_message('mkj',lk='asd',kj='asdqwe');
+# print(m);
+
+#导入模块，模块只*.py文件  import
+#from module_name import function_name  导入特定函数
+#from module_name import function_name1,function_name2  导入多个函数
+#from module_name  import function_name as  alias_name   指定函数别名
+#from module_name  as  alias_name    指定模块别名
+
+#from module_name  import *   导入模块中所有函数
+
+
+# #创建类
+# class Dog():
+#     """"创建小狗类"""
+#     def __init__(self,name,age):
+#         self.name = name
+#         self.age = age
+#
+#     def sit(self):
+#         print(self.name.title()+" is now siting!")
+#
+#     def roll_over(self):
+#         print(self.name.title()+"is rollowing!")
+#
+# my_dog = Dog('zhansan',10);   #创建一个dog对象
+# my_dog.roll_over();    #调用dog类的方法
+
+# class resturant():
+#     def __init__(self,menu,table):
+#         self.menu = menu
+#         self.table = table
+#         self.count = 1   #定义默认值
+#     def get_count(self):
+#         print(self.count)
+#
+# my_r = resturant('mi','001')
+# my_r.get_count();
+# my_r.count = 10;   #修改属性值,也可以使用方法修改属性值
+# my_r.get_count();
+
+
+
+#继承
+#   父类
+"""
+2.7  定义类需要加object关键字，3.0及以上不需要添加object关键字
+子类可以有有自己的属性及方法
+"""
+# class Car(object):
+#     def __init__(self,make,name,mile):
+#         self.make = make
+#         self.name = name
+#         self.mile = mile
+#
+#     def get_descr(self):
+#         print(self.name+"_"+self.make)
+#
+#     def add_oil(self):
+#         print("please add 97")
+#
+# my_car = Car('xibei','www',200)
+# my_car.get_descr();
+#
+#
+# class GasBox():
+#     def __init__(self,capacity="20"):
+#         self.capacity = capacity
+#     def descri_gasbox(self):
+#         print(self.capacity)
+#
+# """ 继承写法 """
+# class Model(Car):
+#     def __init__(self,make,name,mile):
+#         super(Model,self).__init__(make,name,mile)    #示例2.7写法，3.0写法super()中无参数
+#         self.battery = GasBox()     #将GasBox类作为Model的属性
+#
+#     """重写父类方法,子类重写的方法有限执行"""
+#     def add_oil(self):
+#         print("pleas add 98")
+#
+# my_model = Model('ss','lsk',1000)
+# my_model.get_descr()
+# my_model.add_oil()
+# my_model.battery.descri_gasbox()
+
+
+
+"""导入单个类
+from car import Car
+导入多个类
+from car import 类1，类2
+导入整个模块类
+import car
+导入所有类
+from car import *
+"""
+# with open("C:\Users\Administrator\Desktop\\test.txt")  as  file_object:
+#     for line in  file_object:
+#         print(line.rstrip())
+
+
+# with open("C:\Users\Administrator\Desktop\\test.txt")  as  file_object:
+#     lines = file_object.readlines()
+#     for line in  lines:
+#         print(line.rstrip())
+#
+#
+# """w 表示写入  r 表示读取  a  表示追加 r+ 表示读取和写入，默认以只读的模式打开"""
+# with open("C:\Users\Administrator\Desktop\\test1.txt","w") as  file_objects:
+#     file_objects.write("nihao\n")
+#     file_objects.write("zhansan\n")
+
+"""python 异常处理"""
+#print(5/0)
+# try:
+#     print(5/0)
+# except ZeroDivisionError:
+#     print("divied is zero")
+#
+# """简单示例"""
+# print("Give me two number")
+# print("Enter q to quit")
+# while True:
+#     first_number = raw_input("\nNumber:")
+#     if(first_number == 'q'):
+#         break
+#     second_number = raw_input("\nNumber:")
+#     if(second_number == 'q'):
+#         break
+#     try:
+#         answer = int(first_number)/int(second_number)
+#     except ZeroDivisionError:
+#         print("divide is 0")
+#     else:
+#         print(answer)
+
+
+"""方法split() 以空格分开成字符串"""
+# title = "my dog is dead"
+# word = title.split()   #['my', 'dog', 'is', 'dead']
+# print(word)
+#
+#
+# def count_words():
+#     try:
+#         print(5/10)
+#     except ZeroDivisionError:
+#         pass                       #程序什么也不做，充当占位符
+#     else:
+#         print("ok")
+# count_words()
+#
+#
+# message ="m see you"
+# print(message.count("see"))   #count  用于统计see单词的个数
+#
+#
+# """"json 格式"""
+# import  json
+# numbers = [2,3,4,5,6,7,89]
+# filename = "C:\Users\Administrator\Desktop\\numbers.json"
+# with open(filename,'w') as file_obj:
+#     json.dump(numbers,file_obj)      #将number列表存储在numbers.json 文件中
+#
+#
+# with open(filename) as f_obj:
+#     numberes = json.load(f_obj)     #读取numbers.json中的json内容
+#     print(numberes)
+
+# import json
+# """登录用户提示"""
+# filename = "C:\Users\Administrator\Desktop\username.json"
+# try:
+#     with open(filename) as  user_obj:
+#         username = json.load(user_obj)
+# except IOError:
+#     username = raw_input("What is your name?")
+#     with open(filename,'w') as user_obj:
+#         json.dump(username,user_obj)
+#         print("We will rember "+username+" you !")
+# else:
+#     print("Welcome back "+username)
+
+"""针对函数测试类"""
+# def get_formatted(first,last):
+#     full_name = first+" "+last
+#     return full_name
+#
+#
+# # print("\nEnter your q to quit.")
+# # while True:
+# #     fist = raw_input("\nPlease input your first name: ")
+# #     if(fist == 'q'):
+# #         break
+# #     last = raw_input("\n Please input your last name:")
+# #     if(last == 'q'):
+# #         break
+# #     format_name = get_formatted(fist,last)
+# #     print("\nFormatted name is "+format_name)
+#
+#
+#
+#
+# import unittest
+# class NamesTestCase(unittest.TestCase):
+#     def test_first_last_name(self):     #测试类 方法名必须以test开头
+#         f_name = get_formatted('jans','joplin')
+#         self.assertEqual(f_name,'jans joplin')
+#
+# unittest.main()
+
+
+# """针对类的测试类"""
+# import pygame
+# import sys
+# def run_game():
+#     pygame.init()
+#     scree = pygame.display.set_mode((1200,800))
+#     pygame.display.set_caption("Alience")
+#     bg_color = (230,230,230)
+#
+#     while True:
+#         for event in pygame.event.get():
+#             if event.type == pygame.QUIT:
+#                 sys.exit()
+#         scree.fill(bg_color)
+#         pygame.display.flip()
+#
+# run_game()
+
+
+import matplotlib.pyplot as plt
+
+squares = [1,4,5,7,10]
+plt.plot(squares,linewidth=6)
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

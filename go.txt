@@ -1,0 +1,421 @@
+func main() {
+	num := 20
+	if num%2 == 0 {
+		fmt.Println(num,"偶数")
+	}else{
+		fmt.Println(num,"奇数")
+	}
+}
+
+func main() {
+  if num :=20; num %2 == 0{  //变量在if块中有效
+  	fmt.Println(num,"偶数")
+  } else {
+  	fmt.Println(num,"奇数")
+  }
+}
+
+//定义时调用匿名函数
+func main(){
+	func(data int){
+		fmt.Println(data)
+	}(100)
+}
+//匿名函数2
+func main(){
+	f:=func(data string){
+		fmt.Println(data)
+	};
+	f("欢迎学习go语言")
+}
+
+
+func main(){
+  sum,avg,count := GetScore(90,34,67,99,87,45.6)
+  fmt.Printf("学院共有%d门成绩，总成绩为%.2f,平均成绩%.2f",count,sum,avg)
+  fmt.Println()   //打印换行符
+  scores := []float64{92,45,89.3,45,88,67,67.9}
+  sum,avg,count=GetScore(scores...)
+  fmt.Printf("学院共有%d门成绩，总成绩为%.2f,平均成绩%.2f",count,sum,avg)
+}
+
+func GetScore(scores ...float64) (sum,avg float64,count int) {   //参数可变函数
+	for _,value := range scores{
+		sum+=value
+		count++
+	}
+	avg = sum/float64(count)
+	return
+}
+
+
+func main(){
+	a := 10
+	fmt.Printf("%x \n",&a)  //获取变量的地址
+}
+
+
+
+go语言必须要有一个main函数及main包，main函数无返回值
+/*块注释*/    //行注释
+go version  查看go版本
+const Pi float64 = 3.1415926  定义常量
+const (    
+c0 = iota   //0
+c1           //1
+c2           //2
+)
+大写字母的变量在包外可见，小写字母为包内私有;
+var value float64  声明变量
+
+func main(){
+	var str string  //定义一个字符
+    str = "Hello World!"   //给改变量赋值
+    ch := str[1]  //获取第一个元素
+	fmt.Printf("%s %d\n",str,len(str))   //打印
+	fmt.Printf("%c %d",ch,len(str))
+}
+
+x+y  字符串连接
+
+数组
+func main(){
+    arr := [5]int{1,2,3,4,5}
+    modify(arr)
+    fmt.Println("before",arr)   //打印出来的是源数组，go处理数组是将其赋值一个副本进行处理
+}
+func modify(arr [5]int) {
+	arr[0] = 10   //修改源数组
+	fmt.Println("In modify,array",arr)
+}
+
+数组切片
+   //数组切片
+   //定义数组
+   var myArry = [10]int{1,2,3,4,5,6,7,8,9,10}
+   //创建切片
+   var mySlice []int = myArry[:5]   //截取前五个元素
+   var mySlice []int = myArry[:]   //复制整个数组
+   fmt.Println("Elements of arr is :")
+   //遍历数组
+   for _,v := range myArry {
+   	fmt.Println(v," ")
+   }
+
+   fmt.Println("\nelements of silce is :")
+   //遍历切片
+   for _,v := range mySlice {
+   	fmt.Println(v," ")
+   } 
+}
+直接创建切片
+mySlice   := make([]int, 5)  初始化为5个元素
+mySlice := make([]int,5,10)  初始化为5个元素，预留10个位置
+mySlice := []int{1,2,3,4,5}
+
+元素遍历
+for i := 0; i< len(mySlice); i++ {
+	fmt.Println(mySlice[i])
+}
+for i, v := range mySlice {
+	fmt.Println(i,v)
+}
+
+   //定义数组切片
+   mySlice := make([]int ,5,10)
+   fmt.Println("len(mySlice)",len(mySlice))   //获取切片的长度
+   fmt.Println("cap(mySlice)",cap(mySlice))   //获取切片的空间大小10
+   mySlice = append(mySlice),1,3,3);  //在mySlice新加三个元素
+   mySlice2 = []int{9,27,2}
+   mySlice = append(mySlice,mySlice2...)   //给mySlice最终添加另一个切片
+   oldSlice := []int{12,4,5,6}
+   newSlice := oldSlice[:3]  //基于oldSlice构建新的切片
+数组切片内容复制
+slice1 := []int{1,2,3,4,5}
+slice2 := []int{7,8,9}
+copy(slice1,slice2)  //复制slice2的三个位置到slice1的前三位
+copy(slice2,slice1)  //复制slice1的前三个元素到slice2
+
+map
+package main
+import ("fmt")
+//定义类
+   type PersonInfo struct {
+   	id string
+   	name string 
+   	address string
+   }
+
+func main(){
+	//变量声明 string表示键的类型
+var p1 map[string] PersonInfo
+//创建切片
+    p1 = make(map[string] PersonInfo)
+
+    p1["22"] = PersonInfo{"123","tom","room32"}
+    //元素附值
+    p1["1"] = PersonInfo{"99","jerry","room45"}
+    //从map中查询某一个元素
+    person,ok := p1["22"]
+    if ok {
+    	fmt.Println(person.name)
+    } else {
+    	fmt.Println("not find")
+    }
+
+    delete(p1,"22")  //删除元素
+
+
+}
+
+
+if语句
+func main(){
+	
+	fmt.Println(example(10))
+}
+
+func example(x int) string {   //x表示入参 string表示返回值
+		if x > 1 {
+			return "ok"
+		}else {
+			return "not-ok"
+		}
+	}
+
+switch语句
+var i int 
+	i = 10
+	switch i {
+	case 1:
+		fmt.Println("this is one")
+	case 2:
+		fmt.Println("this is two")
+	case 3:
+		fmt.Println("this is three")
+	default:
+		fmt.Println("you input error")
+	}
+第二种语法
+switch {    //switch 不需要参数
+	case 0 <Num && Num <=4:
+	     fmt.Println("123")
+	case 4 < Num && Num <=10:
+	     fmt.Println("456")
+}
+
+for循环语句
+sum := 0
+for i := 0;i<10;i++ {
+	sum += i
+}
+语法格式2
+for {
+	sum++
+	if sum < 100 {
+	   break
+	}
+}
+for循环多重复值
+a := []int{1,2,3,4,5}
+for i,j := 0,len(a)-1;i<j;i,j = i+1,j-1 {
+	a[i],a[j] = a[j],a[i]
+}
+
+goto语法
+func myfunc() {
+	i ：= 0
+	Here：
+	fmt.Println(i)
+	i++
+	if i< 10 {
+	   goto Here
+	}
+}
+go语言变量说明，小写字母开头的在本包内可见，大写字母开头的可以被其他包引用
+函数语法
+func Add(a int,b int) (ret int,err error) {    ret err 为返回变量
+	
+}
+
+调用函数
+import  "mypath"
+c := Add(1,2)
+
+不定参数
+func main(){
+  myfunc(1,2,34,4)
+}
+
+func myfunc(args ...int){
+	for _,arg := range args {
+		fmt.Println(arg)
+	}
+}
+
+任意类型的不定参数
+func main(){
+	var a int = 1
+	var b string = "hello"
+	var c int64 = 33
+	var d float64 = 1.2345
+    myPrintf(a,b,c,d)
+}
+func myPrintf(args ...interface{}) {
+	for _,arg  := range args {
+		switch arg.(type) {
+		case int:
+			fmt.Println(arg,"is int")
+		case string:
+			fmt.Println(arg,"is string")
+		case int64:
+			fmt.Println(arg,"is int64")
+		default:
+			fmt.Println("i do not konw")
+		}
+	}
+}
+
+错误处理
+error 接口
+type error interface {
+	Error() string
+}
+defer 延迟执行，最后一个defer最先被执行
+defer func() {
+	  //通过匿名函数做最后的清理工作
+} ()
+
+panic() 和 recover()
+注意配置GOPATH环境变量
+
+
+var a = [3]int{1,2,3}
+var b = &a     //传入指针
+b[1]++
+fmt.Println(a,b) //[1,3,3] [1,3,3]
+
+
+func Count(ch chan int) {
+	ch <- 1   //写入到channel
+	fmt.Println("Counting")
+}
+
+func main(){
+	//var ch chan int   //声明一个int类型channle
+	chs := make([]chan int,10)
+	for i :=0 ; i > 10 ; i++ {
+		chs[i] = make(chan int)
+		go Count(chs[i])
+	}
+
+	for _,ch := range(chs) {
+		//10 <- ch  //读取channel
+		fmt.Println(ch)
+	}
+}
+
+
+select 语法
+用于处理异步io问题
+func main(){
+   ch := make(chan int,1)
+   var count int
+   for {
+   	   select {
+   	   case ch <- 0:
+   	   case ch <- 1:
+   	   }
+   	   i := <-ch
+   	   count++
+   	   if count > 10 {
+   	   	break
+   	   }
+   	   fmt.Println(i)
+   }
+}
+
+close(ch)  #关闭channel
+
+#批量声明变量
+var (    
+a int
+b string
+c []float64
+d func() bool
+)
+
+切片 函数 指针变量的初始值为nil
+var hp int = 100
+hp := 100   hp变量必须为不存在的变量
+交换变量
+var a int = 100
+var b int = 200
+b,a = a,b
+
+匿名变量,用“_”表示
+func GetData() (int int){
+	return 100,200
+}
+a,_ := GetData()
+
+数据类型
+int8 int16 int32 int64
+float32 float64   %f
+var n bool  布尔类型
+const str = `多行字符串`
+字符 uint8 rune
+
+类型转化
+var c float = math.Pi
+fmt.Println(int(c))   将浮点型转为整型
+ptr := &v    v的类型是T，ptr 是*T 
+
+var house = "Maliba 19022"
+ptr := &house
+fmt.Printf("%T\n",ptr)
+fmt.Printf("%p\n",ptr)    //获取指针地址
+value := *ptr
+fmt.Printf("%s",value)   //获取值
+
+
+数据交换
+func swap(a,b *int){
+	t := *a   //取a的值付给t
+	*a = *b  //将b的指针赋给a指针指向的变量
+	*b = t  //将a指针的值赋给b指针指向的变量
+}
+func main(){
+   x,y := 1,2
+   swap(&x,&y)
+   fmt.Println(x,y)
+}
+
+
+flag包
+go run mychannl.go --mode fase
+func main(){
+   var mode = flag.String("mode","","process mode")
+   flag.Parse()
+   fmt.Println(*mode)
+}
+
+
+func main(){
+	//创建指针的另一种方法
+	str := new(string)  //创建指正
+	*str = "hello"     
+	fmt.Println(*str)   //取值
+}
+
+
+
+
+
+
+
+
+
+
+
+

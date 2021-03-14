@@ -1,0 +1,64 @@
+ssh-keygen
+ssh-copy-id
+ssh-keyscan   登录远程主机不会提示是否保存
+/etc/ansible/hosts
+#ansible配置主机
+192.168.56.111
+www.baidu.com
+[webserver]
+192.168.56.111
+www.baidu.com
+[db]
+192.168.1.2
+192.168.1.3
+[source:children]  source组中包含两个组
+webserver
+db
+
+[targets]
+localhost ansible_connection=local ansible_user=root
+ansible_connection  三种方式ssh local paramiko
+ansible_host   ansible主机名
+ansible_port    ssh端口
+ansible_user    ssh用户
+ansible_ssh_pass  ssh密码
+
+ansible-playbook site.yml  --verbose  查看输出细节
+ansible-playbook site.yml --list-hosts  查看影响了哪些主机
+ansible-playbook site.yml -f 10   并行执行
+
+export ANSIBLE_LIBRARY=/ansible-module-extras  
+ansible-doc module_name  查看安装了哪些模块
+ansible-doc yum  查看yum用法的
+
+error_on_undefined_vars = False  在配置文件中添加此配置，ansible在遇到为定义的变量是不会报错
+
+
+112
+
+
+
+
+ansible all -m ping  -u root  #查看所有主机是否都是用root可以进行访问
+ansible  all -a "/bin/echo helo"  #在远程监控主机执行命令
+ansible all -m setup  #查看所有主机信息
+
+
+/etc/ansible/ansible.cfg  配置文件
+inventory = /etc/ansible/hosts
+library = /usr/share/my_modules/
+remote_tmp =  $HOME/.ansible/tmp  远程主机临时目录
+local_temp = $HOME/.ansible/tmp  被管节点临时目录
+accelerate = 5099  连接端口号
+ansible-playbook -i  hosts site.yml   -i 传递主机清单
+ansible-playbook --inventory-file hosts site.yml
+
+
+
+
+
+#开放80端口
+firewall-cmd --zone=public --add-port=80/tcp --permanent
+#查看已经开放的端口列表 
+firewall-cmd  --zone=public --list-port 
+firewall-cmd --reload  更新防火墙规则

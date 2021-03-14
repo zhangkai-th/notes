@@ -1,0 +1,180 @@
+docker  info
+docker version
+docker image ls  查看本地仓库中是否包含镜像
+docker  image pull centos:latest  获取最新的centos镜像
+docker image pull centos:7.1 获取centos7.1版本
+docker image pull 第三方域名/docker hup 用户名/centos:latest
+docker image pull -a nigelpoulton/tu-deom   -a拉取docker hub中的所有镜像
+docker search centos   查询包含centos关键字的镜像
+docker search centos --filter "is-official=true"   --filter 只显示官方镜像
+docker search centos  --limit=100  --limit=100代表显示100个搜索结果，默认展示25个
+docker image inspect centos:latest   查看镜像分层,元数据，镜像层数据
+docker image ls  --digests centos:latest  查看本地镜像摘要,sha256签名
+docker image rm centos:latest     删除镜像
+docker image pull 镜像摘要     通过镜像摘要获取镜像
+docker image rm   镜像id   删除镜像
+docker image ls -q  返回本地拉去镜像的全部镜像id
+docker image rm $(docker image ls -q) -f   删除本地镜像中的所有镜像
+容器
+查看容器是否运行
+systemctl is-active docker
+运行容器
+docker container run -it centos:latest  /bin/bash
+退出容器
+ctrl shift pq  
+查看当前运行的容器
+docker container ls
+重新进入正在运行的容器中
+docker container  exec -it aca4c86e4df4  bash
+查看当前运行的容器
+docker container ps
+停止容器
+docker  container stop aca4c86e4df4
+删除容器
+docker contabiner rm aca4c86e4df4
+运行容器，-name指定名字为 percy
+docker container run --name percy -it ubuntu:latest  /bin/bash
+显示当前主机所有的容器 -a展示所有容器，运行和不在运行的容器
+docker container ls -a
+启动容器
+docker container start percy
+停止容器并不会破坏容器中的数据
+
+停止容器的步骤
+docker container stop percy;docker container rm percy;docker container ls -a
+
+docker 容器自我修复策略
+--restart 指定容器自我修复策略
+always   
+unless-stopped   当守护进程重新启动时 always会被重新启动，unless-stopped不会重启,还是运行状态
+on-failure   当退出容器状态码不为0时进行重启
+docker container run   --name  neverstop -it  --restart always ubuntu /bin/bash
+-d将容器放在后台运行 -p将宿主机的80端口映射到容器的8080端口
+docker container run -d --name webserver -p 80:8080  ubuntu /bin/bash
+删除所有容器，不进行提示 ,不要在生产环境执行
+docker container rm $(docker container ls -aq) -f  
+查看容器的详细信息
+docker container inspect c1
+
+使用Dockerfile容器化
+创建镜像
+docker  image build -t web:latest .    .代表以当前路径为构建上下文,通过镜像构建镜像
+docker  image build -t web:latest .  --nocache=true  强制忽略对缓存的使用 -f  指定dockfile的文件路径
+docker login  登陆docker官网
+registry  	镜像仓库服务
+repository  镜像仓库
+tag  镜像标签
+修改镜像的标签，前边是old后边是new
+docker image tag ubuntu:latest  wearefamily/web:latest     wearefamily 代表用户名
+将镜像推送至远程仓库
+docker image push  wearefamily/web
+查看镜像的构建过程
+docker image history  ubuntu
+
+
+
+docker compose 部署应用
+下载地址
+curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose
+使用docker-compose启动容器
+docker-compose -f *.yml  up
+docker-compose up -d   在后台启动
+查看docker网络
+docker network ls
+查看卷组
+docker volume ls
+docker-compose down 使用docker-compose停止容器
+docker-compose ps  查看应用的状态
+docker-compose top  查看个容器运行的进程
+docker-compose stop  停止应用而不会删除
+docker-compose rm 删除相关的网络和容器
+docker-compose restart  重启应用
+docker-compose down 关闭所有应用
+
+docker swarm docker安全集群
+分布式etcd数据库
+
+
+
+
+
+
+docker 网络
+网络架构设计 cnm
+docker network ls 
+docker network inspect bridge
+创建桥接网络（单机）
+docker network create -d bridge zhangkai
+yum install bridge-utils  安装brctl命令
+brctl show 显示网桥信息
+创建容器并指定网络
+docker container run -d --name c1 --network  zhangkai centos sleep 1d
+创建在同一个网络容器
+docker container run -it --name c2  --network  zhangkai  centos bash
+ping c1  发现网络已经联通
+创建一个nginx web容器,将宿主机5000端口映射到容器的80端口
+docker container run -d --name web \
+> --network zhangkai \
+> --publish 5000:80 \
+> nginx
+
+创建覆盖网络
+docker  network create -d overly netname
+
+
+macvlan 驱动
+创建macvlan地址
+docker network  create -d macvlan --subnet=10.0.0.0/24 --ip-range=10.0.0.0/25 --gateway=10.0.0.1 -o parent=enp0s8.100 macvlan100    #enp0s8为网卡名
+查看容器的运行日志
+docker logs web
+
+docker DNS docker内置dns服务
+--dns 指定dns服务器
+docker container run -it --name c3 \
+> --dns=8.8.8.8 \
+> --dns-search=dockercerts.com \
+> centos bash
+docker network prune  删除docker主机上全部未使用的网络
+
+
+swarm 支持两种发布模式
+Ingress  模式
+
+Host 模式
+
+
+docker 卷与持久化数据
+docker volume  create myvom  创建卷
+docker volume ls   查看创建的卷
+docker volume inspect myvom   查看卷详细信息
+创建卷的默认路径  /var/lib/docker/volumes/myvom
+docker volume prune  删除所有卷
+docker volume rm myvom   删除myvom卷
+创建容器，并指定卷，myvom为本地，/vol 为容器路径,如果不存在则自动创建
+docker container run -dit --name c11 --mount source=myvom,target=/vol centos
+切换到正在运行的容器中
+docker container exec -it c11 bash
+
+docker Stack  多服务部署监控
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

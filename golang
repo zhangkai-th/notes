@@ -1,0 +1,29 @@
+init函数
+func init(){
+	fmt.Println("执行 init函数")
+}
+func main(){
+	fmt.Println("执行main函数")
+}
+init函数先执行
+
+执行顺序：全局变量 init main
+如果引入其他包的变量则执行循序如下
+其他工具包-全局变量-init-main
+
+匿名函数
+
+作用域
+函数作用域仅限于函数内部
+str,err := strconv.Atoi("123") 字符串转整数
+str := strconv.Itoa(12345)  整数转字符串
+b := []byte("hello go")  字符转byte
+str := string([]byte{97,98,99}) byte转string
+str := strconv.FormatInt(123,2)   十进制转2、8、16进制
+strings.Contains("seafood","sea")  判断字符串中是否含有字符
+strings.Count("ggggg","g")    统计字符出现的次数
+==   区分大小写
+strings.EqualFold("abc","Abc")  比较字符串是否相等，且不区分大小写
+strings.Index("adbcdf","df")  	返回字符串第一次出现的index值
+
+133

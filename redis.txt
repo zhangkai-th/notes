@@ -1,0 +1,50 @@
+port  6379
+key-value
+hash
+list
+set
+zset  有序集合
+mset w01 tom w02 sz   设置多个string
+mget w01 w02   获取多个string
+
+hash  键值对集合
+存储信息
+hset user1 name "tom"
+hset user1 age 20
+hset user1 job "golang coder"
+hget user1 name    获取name属性
+
+hgetall  user1   获取所有属性值
+hdel  user1  删除对象
+hmset user2 name jerry age 100 job "golang coder"  #一次性存取多个属性
+hmget user2 name age job  
+
+hlen user2   #查看属性的长度
+HEXISTS user1  name  #判断user1对象中是否有name属性
+
+list 列表
+有序、元素可以重复
+lpush city beijing  shanghai yunnan
+lrange 0 -1  #0表示第一个元素  1 表示第一个元素  -1表示最后一个元素  返回区间内的元素
+rpush city lk hg   #追加
+ lpop city  #将左边数据弹出
+ rpop city  #将右边数据弹出
+del city  #删除列表
+LLEN city  #获取列表长度
+ lindex city 0  #获取下表为0的元素
+
+set 集合
+无序，且不能重复
+
+ SADD emails zhangsan@qq.com lisi@qq.com   #添加元素
+ SMEMBERS emails  #查看添加的元素
+ SISMEMBER emails lisi@qq.com #判断lisi@qq.com元素是否存在
+ SREM emails lisi@qq.com   #删除元素
+
+
+
+
+
+
+
+
