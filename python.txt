@@ -248,3 +248,21 @@ abs(x, /)
 
 
 lamba函数，匿名函数
+
+
+print函数
+>>> print("hello\nworld")
+hello
+world
+
+>>> print("hello-"*3)
+hello-hello-hello-
+
+'''
+多行注释
+'''
+"""
+多行注释
+@ 创建人: 无语
+"""
+
