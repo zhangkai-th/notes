@@ -405,15 +405,259 @@ funcname.__defaults__ 查看当前函数的默认值
 # 		print(item)
 # print_books('jsjsj','sfdsdf')
 #接收键值对参数
-def print_person_message(**person):
-	for k,v in person.items():
-		print(k,'------',v)
-print_person_message(name="tom",age=12,weight=2390)
+# def print_person_message(**person):
+# 	for k,v in person.items():
+# 		print(k,'------',v)
+# print_person_message(name="tom",age=12,weight=2390)
 
-person={'name':'tom','age':20}
-print_person_message(**person)  #接收现有的字典
-#python返回值可返回多个数据
-return va1,va2
+# person={'name':'tom','age':20}
+# print_person_message(**person)  #接收现有的字典
+# #python返回值可返回多个数据
+# return va1,va2
+
+'''
+匿名函数
+'''
+# import math
+# def circle_area(r):
+# 	result=math.pi*r
+# 	return result
+# print(circle_area(10))
+
+# r=10
+# result=lambda r:math.pi*r*r   #与上面的函数等价
+# print(result(r))
+'''
+类
+'''
+# class React():
+# 	def __init__(self,weight,height):
+# 		self.weight=weight
+# 		self.height=height
+# 	@property   #将其转为属性
+# 	def area(self):
+# 		return self.weight*self.height
+# react=React(100,200)
+# print(react.area)
+# #@operty 实现只读
+# class TVshow():
+# 	def __init__(self,name):
+# 		self.__name=name
+# 	@property
+# 	def show(self):
+# 		return self.__name
+# tvshow=TVshow("正在播放《战狼》")
+# #tvshow.show="hh"
+# print(tvshow.show)
+
+# class TVshows():
+# 	film=['红海行动','业务司']
+# 	def __init__(self,show):
+# 		self.__show=show
+# 	@property
+# 	def show(self):
+# 		return self.__show
+# 	@show.setter      #将属性设置为可写
+# 	def show(self,value):
+# 		if value in self.film:
+# 			self.__show=value
+# 		else:
+# 			self.__show="no this film"
+
+# tvshow1=TVshows('封神榜')
+# print(tvshow1.show)
+# tvshow1.show='红海行动'
+# print(tvshow1.show)
+
+'''
+继承
+'''
+# class Animal:
+# 	#color='red'
+# 	def __init__(self,color='red'):
+# 		Animal.color=color
+# 	def run(self,color):
+# 		print("动物的颜色是",color)
+# 		print("动物原来是",Animal.color)
+# class Bird(Animal):
+# 	#color='black'
+# 	def __init__(self,color='white'):
+# 		super().__init__(color)    #调用父类的__init__方法
+# 		print('我是鸟')
+# 		#方法重写,优先执行子类的方法
+# 	def run(self,color):
+# 		print("鸟是",color)
+# 		print("鸟原来是",Animal.color)
+# bird = Bird()
+
+# bird.run(bird.color)
+
+'''
+模块搜索目录
+当前目录
+pythonpath
+python 安装目录
+'''
+# import sys
+# print(sys.path)
+# sys.path.append('e:/program/')
+#在e:/program/ 新建以.pth结尾的文件,将路径写进去,则只在当前环境中有效
+#在新建环境变量pythonpath 则在所有版本中有效;模块中必须有 if __name__=="__main__":
+
+
+	
+'''
+包，每个包中必须有一个__init__.py文件
+
+'''
+'''
+随机生成验证码
+'''
+# print(chr(65))
+# import random
+# checkcode=""
+# for i in range(4):
+# 	index=random.randrange(0,4) #生成0-3中的一个数
+# 	print(index)
+# 	if index !=i and  index +1 !=i:
+# 		checkcode += chr(random.randint(97,122))  #a -z
+# 	elif index +1 == i:
+# 		checkcode+= chr(random.randint(65,90)) # 
+# 	else:
+# 		checkcode+=str(random.randint(0,9))
+# print(checkcode)
+
+
+
+'''
+第三方模块下载
+ pip list  查看安装了那些第三方包
+ help('modulename')  查看包的使用
+'''
+# import random
+# def game_dlt():
+# 	nums=int(input("请输入你需要打印的注数:"))
+# 	for i in range(nums):
+# 		for j in range(7):
+# 			data=random.randint(0,99)
+# 			if data <10:
+# 				data='0'+str(data)
+# 			print(str(data),end=" ")
+# 		print("")
+
+# game_dlt()
+
+
+# def division(num1="10",num2="10"):
+# 	print("=======分苹果了========")
+# 	result=0
+# 	try:
+# 		result=num1/num2
+# 	except Exception as e:
+# 		print(e)
+# 	#print(result)
+# 	else:
+# 		'''
+# 		执行成功之后会执行如下代码
+# 		'''
+# 		print(result)
+# 		print("计算结束")
+# 	finally:   #该段下的代码，无论如何都会执行
+# 		print("收尾工作结束") 
+# #division(num2=100,num1=10)
+# division(num2=0,num1=10)
+
+
+# def send_apple(person,apple):
+# 	if person > apple:
+# 		raise ValueError("苹果不够分哦")    定义异常
+# 	else:
+# 		print("苹果够分")
+# try:
+# 	send_apple(4,3)
+# except ValueError as e:
+# 	print(e)
+
+'''
+应用断言调试
+python -O script.py   关闭断言
+'''
+# def send_apple(person,apple):
+# 	assert apple > person,"苹果不够分哦"
+
+# try:
+# 	send_apple(4,3)
+# except AssertionError as e:
+# 	print(e)
+'''
+文件操作
+'''
+# file=open('redis.txt','rb')  #rb表示以二进制的格式打开文件
+# print(file)
+# file1=open('redis.txt',encoding='utf-8') #指定编码
+# print(file1)
+#file.close()  关闭文件
+'''
+使用with的方式打开文件
+'''
+# with open("redis.txt",'w') as file:  #文件写入后自动关闭
+# 	pass
+
+# with open('gis.txt','r') as file:
+# 	#file.seek(10)
+# 	#file.write("写入数据222\n")
+# 	#string=file.read(10)
+# 	#string=file.read()   #全部读入
+# 	#string=file.readline()  #读取一行
+# 	string=file.readlines()  读取全部行
+# 	print(string)
+
+'''
+循环读取文件
+'''
+# with open('redis.txt','r',encoding='utf-8') as file:
+# 	line_num=1
+# 	while True:
+# 		line=file.readline()
+# 		if line == '':
+# 			break
+# 		line_num+=1
+# 		print(line_num,line,end="")
+# print("="*10)
+'''
+文件模块操作
+os.path.join("E:\program","deom\message.txt")  拼接路径
+os.path.exists("E:\program")  判断目录是否存在
+os.mkdir("E:\program")  创建文件夹
+os.path.isdir(path) 是否为有效路径
+os.makedirs(path)  创建多级目录
+os.rmdir(path) 删除目录,只能删除空目录
+os.worlk()  遍历指定目录
+os.remove(filename) 删除文件
+'''
+
+# import os
+# print(os.name)
+# print(os.getcwd())  #获取当前路径
+# print(os.listdir(os.getcwd()))  #获取当前文件夹下的文件名
+
+# import shutil 模块
+# shutil.rmtree(path)  删除目录机器子内容
+
+'''
+python 操作数据库
+conn=pymysql.connect(host='localhost',user='user',
+password='passwd',
+db='test',
+charset='utf-8',
+cursorclass=pymysql.cursors.DictCursor)
+'''
+#import sqlite3
+
+'''
+gui界面
+'''
+
 
 
 
